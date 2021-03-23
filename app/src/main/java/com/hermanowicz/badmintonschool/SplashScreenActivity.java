@@ -41,6 +41,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void delayAndGoToMainActivity() {
-        new Handler().postDelayed(() -> goToMainActivity(), 1800);
+        new Handler().postDelayed(() -> {
+            finish();
+            goToMainActivity();
+        }, 1800);
     }
 }

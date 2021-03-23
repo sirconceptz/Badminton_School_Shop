@@ -41,7 +41,7 @@ public class NewsFragment extends Fragment implements KeyEventListener {
     }
 
     private void setView() {
-        webview.loadUrl("http://lukaszkomar.vxm.pl/mobile_app/?page_id=18");
+        webview.loadUrl("https://m.facebook.com/SzkolaBadmintona/posts/");
         webview.setWebViewClient(new WebViewClient());
         webview.getSettings().setBuiltInZoomControls(true);
         webview.getSettings().setJavaScriptEnabled(true);

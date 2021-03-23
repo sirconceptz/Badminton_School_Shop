@@ -8,15 +8,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.hermanowicz.badmintonschool.BuildConfig;
 import com.hermanowicz.badmintonschool.R;
 
 public class AuthorDialog extends AppCompatDialogFragment {
 
-    ImageView linkedInProfile, facebookProfile;
+    private ImageView linkedInProfile, facebookProfile;
+    private TextView appVersion;
 
     public static AuthorDialog newInstance(int title) {
         AuthorDialog frag = new AuthorDialog();
@@ -41,6 +44,7 @@ public class AuthorDialog extends AppCompatDialogFragment {
 
         initView(view);
         setListeners();
+        showAppVersion();
 
         return builder.create();
     }
@@ -48,6 +52,7 @@ public class AuthorDialog extends AppCompatDialogFragment {
     private void initView(View view) {
         linkedInProfile = view.findViewById(R.id.linkedIn);
         facebookProfile = view.findViewById(R.id.facebook);
+        appVersion = view.findViewById(R.id.appVersion);
     }
 
     private void setListeners() {
@@ -66,5 +71,9 @@ public class AuthorDialog extends AppCompatDialogFragment {
             intent.setData(Uri.parse(getString(R.string.author_facebook_profile)));
             startActivity(intent);
         });
+    }
+
+    private void showAppVersion() {
+        appVersion.setText(String.format("%s: %s", getResources().getText(R.string.settings_version), BuildConfig.VERSION_NAME));
     }
 }
